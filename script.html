@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <script>
+      function singleRound() {
+        //computer choice
+        const hands = ["ROCK", "PAPER", "SCISSORS"];
+        const computerChoice = hands[Math.floor(Math.random() * hands.length)];
+
+        //player choice =
+        const playerSelection = prompt(
+          "Please enter Rock, Paper, or Scissors"
+        ).toUpperCase();
+
+        if (playerSelection == "ROCK") {
+          if (computerChoice == "ROCK" && playerSelection) {
+            alert("nobody wins, play again");
+            let winner = null;
+          } else if (computerChoice == "PAPER" && playerSelection) {
+            alert("computer wins");
+            let winner = "computer";
+          } else if (computerChoice == "SCISSORS" && playerSelection) {
+            alert("human wins");
+            let winner = "human";
+          } else {
+            alert("broken?");
+          }
+        } else if (playerSelection == "PAPER") {
+          if (computerChoice == "ROCK" && playerSelection) {
+            alert("human wins");
+            let winner = "human";
+          } else if (computerChoice == "PAPER" && playerSelection) {
+            alert("nobody wins, play again");
+            let winner = null;
+          } else if (computerChoice == "SCISSORS" && playerSelection) {
+            alert("computer wins");
+            let winner = "computer";
+          } else {
+            alert("broken?");
+          }
+        } else if (playerSelection == "SCISSORS") {
+          if (computerChoice == "ROCK" && playerSelection) {
+            alert("computer wins");
+            let winner = "computer";
+          } else if (computerChoice == "PAPER" && playerSelection) {
+            alert("human wins");
+            let winner = "human";
+          } else if (computerChoice == "SCISSORS" && playerSelection) {
+            alert("nobody wins, play again");
+            let winner = null;
+          } else {
+            alert("broken?");
+          }
+        } else {
+          alert("invalid player input");
+        }
+
+        console.log(
+          "Human: " + playerSelection + " Computer: " + computerChoice
+        );
+      };
+
+
+        singleRound();
+
+    </script>
+  </body>
+</html>
