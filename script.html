@@ -7,6 +7,9 @@
   </head>
   <body>
     <script>
+      let computerWin = 0;
+      let humanWin = 0;
+
       function singleRound() {
         //computer choice
         const hands = ["ROCK", "PAPER", "SCISSORS"];
@@ -20,39 +23,36 @@
         if (playerSelection == "ROCK") {
           if (computerChoice == "ROCK" && playerSelection) {
             alert("nobody wins, play again");
-            let winner = null;
           } else if (computerChoice == "PAPER" && playerSelection) {
             alert("computer wins");
-            let winner = "computer";
+            computerWin++;
           } else if (computerChoice == "SCISSORS" && playerSelection) {
             alert("human wins");
-            let winner = "human";
+            humanWin++;
           } else {
             alert("broken?");
           }
         } else if (playerSelection == "PAPER") {
           if (computerChoice == "ROCK" && playerSelection) {
             alert("human wins");
-            let winner = "human";
+            humanWin++;
           } else if (computerChoice == "PAPER" && playerSelection) {
             alert("nobody wins, play again");
-            let winner = null;
           } else if (computerChoice == "SCISSORS" && playerSelection) {
             alert("computer wins");
-            let winner = "computer";
+            computerWin++;
           } else {
             alert("broken?");
           }
         } else if (playerSelection == "SCISSORS") {
           if (computerChoice == "ROCK" && playerSelection) {
             alert("computer wins");
-            let winner = "computer";
+            computerWin++;
           } else if (computerChoice == "PAPER" && playerSelection) {
             alert("human wins");
-            let winner = "human";
+            humanWin++;
           } else if (computerChoice == "SCISSORS" && playerSelection) {
             alert("nobody wins, play again");
-            let winner = null;
           } else {
             alert("broken?");
           }
@@ -63,10 +63,25 @@
         console.log(
           "Human: " + playerSelection + " Computer: " + computerChoice
         );
+
+          console.log("Human won: " + humanWin + " Computer won: " + computerWin);
+
       };
 
 
-        singleRound();
+
+  for (let winner = 0; winner< 11; winner++) {
+       singleRound();
+       if (humanWin == 3) {
+         console.log("Human Won the Game");
+         break;
+       } else if (computerWin == 3) {
+console.log("Computer Won the Game");
+break;
+       } else {
+         singleRound();
+       }
+     }; 
 
     </script>
   </body>
