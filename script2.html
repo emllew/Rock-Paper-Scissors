@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>rock paper scissors2</title>
+  </head>
+  <body>
+    <button id="button" class="rock" onclick="singleRound('rock')">🪨 🤘</button>
+    <button id="button" class="paper" onclick="singleRound('paper')">
+      📄 ✋
+    </button>
+    <button id="button" class="scissors" onclick="singleRound('scissors')">
+      ✂️ ✌️
+    </button>
+    <div id="container">
+      <div class="scoreboard">Scoreboard:</div>
+
+      <div class="roundWinner"><br /></div>
+
+      <div class="round"><br /></div>
+
+      <div class="total"><br /></div>
+
+      <div class="gameWinner"><br /></div>
+    </div>
+
+    <script>
+      let computerWin = 0;
+      let humanWin = 0;
+      let totalGames = 0;
+      singleRound();
+
+      function singleRound(choice) {
+        //computer choice
+        const hands = ['rock', 'paper', 'scissors'];
+        const computerChoice = hands[Math.floor(Math.random() * hands.length)];
+        //player choice =
+        const playerSelection = choice;
+        //roundWinner counter in html
+        const roundWinner = document.querySelector('.roundWinner');
+
+        if (playerSelection == 'rock') {
+          if (computerChoice == 'rock' && playerSelection) {
+            roundWinner.textContent = 'nobody wins, play again';
+            totalGames++;
+          } else if (computerChoice == 'paper' && playerSelection) {
+            roundWinner.textContent = 'computer wins this time';
+            computerWin++;
+            totalGames++;
+          } else if (computerChoice == 'scissors' && playerSelection) {
+            roundWinner.textContent = 'human wins this time';
+            humanWin++;
+            totalGames++;
+          } else {
+            roundWinner.textContent = 'broken?';
+            totalGames++;
+          }
+        } else if (playerSelection == 'paper') {
+          if (computerChoice == 'rock' && playerSelection) {
+            roundWinner.textContent = 'human wins this time';
+            humanWin++;
+            totalGames++;
+          } else if (computerChoice == 'paper' && playerSelection) {
+            roundWinner.textContent = 'nobody wins, play again';
+            totalGames++;
+          } else if (computerChoice == 'scissors' && playerSelection) {
+            roundWinner.textContent = 'computer wins this time';
+            computerWin++;
+            totalGames++;
+          } else {
+            roundWinner.textContent = 'broken?';
+          }
+        } else if (playerSelection == 'scissors') {
+          if (computerChoice == 'rock' && playerSelection) {
+            roundWinner.textContent = 'computer wins this time';
+            computerWin++;
+            totalGames++;
+          } else if (computerChoice == 'paper' && playerSelection) {
+            roundWinner.textContent = 'human wins this time';
+            humanWin++;
+            totalGames++;
+          } else if (computerChoice == 'scissors' && playerSelection) {
+            roundWinner.textContent = 'nobody wins, play again';
+            totalGames++;
+          } else {
+            roundWinner.textContent = 'broken?';
+            totalGames++;
+          }
+        } else {
+          roundWinner.textContent = 'Please pick a hand';
+        }
+
+        const round = document.querySelector('.round');
+        const total = document.querySelector('.total');
+        round.textContent = `
+           Round ${totalGames}. Human chose ${playerSelection}. Computer chose ${computerChoice}.`;
+        total.textContent = `Human won: ${humanWin}, Computer won: ${computerWin}`;
+        if (humanWin == 3) {
+          humanWon();
+        } else if (computerWin == 3) {
+          computerWon();
+        } else {
+          console.log('keep goin');
+        }
+      }
+
+      function humanWon() {
+        const gameWinner = document.querySelector('.gameWinner');
+        gameWinner.textContent = `
+           The human won the whole thing`;
+      }
+      function computerWon() {
+        const gameWinner = document.querySelector('.gameWinner');
+        gameWinner.textContent = `
+           The computer won the whole thing`;
+      }
+    </script>
+  </body>
+</html>

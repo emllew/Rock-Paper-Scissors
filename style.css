@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,300&display=swap');
+
+body {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+background-color:#f4f4f4;
+font-family: 'Raleway', sans-serif;
+font-size: 1em;
+flex-direction: column;
+}
+
+button {
+  flex-direction: row;
+  background-color:#faea9b;
+  color:#faab99;
+  border: none;
+  border-radius: 50px;
+  padding: 30px;
+margin: 30px;
+}
+button:hover {
+  cursor:pointer;
+}
+
+#container {
+  line-height:1.5;
+  background-color: white;
+  padding: 20px;
+
+}
+
+.winner {
+  color:#83d18e;
+  padding: 40px;
+  font-style: italic;
+}
+
+.total {
+  color:#fac3e2;
+}
+
+.round {
+  color:#c2cdfa;
+}
+
+.scoreboard{
+color:#faab99;
+}
+.roundWinner {
+  color:orange;
+}
+
+.gameWinner {
+color:#d62424;
+font-style:italic;
+}
