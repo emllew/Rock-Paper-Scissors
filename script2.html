@@ -7,30 +7,42 @@
     <title>rock paper scissors2</title>
   </head>
   <body>
-    <button id="button" class="rock" onclick="singleRound('rock')">🪨 🤘</button>
-    <button id="button" class="paper" onclick="singleRound('paper')">
-      📄 ✋
-    </button>
-    <button id="button" class="scissors" onclick="singleRound('scissors')">
-      ✂️ ✌️
-    </button>
-    <div id="container">
-      <div class="scoreboard">Scoreboard:</div>
+    <div class="container-all">
+      <div class="buttons">
+        <button id="button-choice" class="rock" onclick="singleRound('rock')">
+          🪨 🤘
+        </button>
+        <button id="button-choice" class="paper" onclick="singleRound('paper')">
+          📄 ✋
+        </button>
+        <button
+          id="button-choice"
+          class="scissors"
+          onclick="singleRound('scissors')"
+        >
+          ✂️ ✌️
+        </button>
+      </div>
+      <div id="container">
+        <div class="displayOne">Please chose a hand!</div>
+        <div class="text">
+          <div class="roundWinner"><br /></div>
 
-      <div class="roundWinner"><br /></div>
+          <div class="round"><br /></div>
 
-      <div class="round"><br /></div>
-
-      <div class="total"><br /></div>
-
-      <div class="gameWinner"><br /></div>
+          <div class="total"><br /></div>
+        </div>
+        <div class="gameWinner"><br /></div>
+        <div class="playAgain"></div>
+      </div>
     </div>
 
     <script>
       let computerWin = 0;
       let humanWin = 0;
       let totalGames = 0;
-      singleRound();
+      const text = document.querySelector('.text');
+      const buttons = document.querySelector('.buttons');
 
       function singleRound(choice) {
         //computer choice
@@ -40,7 +52,10 @@
         const playerSelection = choice;
         //roundWinner counter in html
         const roundWinner = document.querySelector('.roundWinner');
-
+        const displayOne = document.querySelector('.displayOne');
+        text.removeAttribute('style', 'display:none');
+        buttons.removeAttribute('style', 'display:none');
+        displayOne.setAttribute('style', 'display:none');
         if (playerSelection == 'rock') {
           if (computerChoice == 'rock' && playerSelection) {
             roundWinner.textContent = 'nobody wins, play again';
@@ -92,29 +107,52 @@
           roundWinner.textContent = 'Please pick a hand';
         }
 
+        //winners
+
         const round = document.querySelector('.round');
         const total = document.querySelector('.total');
+
         round.textContent = `
-           Round ${totalGames}. Human chose ${playerSelection}. Computer chose ${computerChoice}.`;
+           Round ${totalGames}.
+            Human chose ${playerSelection}. Computer chose ${computerChoice}.`;
         total.textContent = `Human won: ${humanWin}, Computer won: ${computerWin}`;
         if (humanWin == 3) {
           humanWon();
+          text.setAttribute('style', 'display:none');
+          buttons.setAttribute('style', 'display:none');
         } else if (computerWin == 3) {
           computerWon();
+          text.setAttribute('style', 'display:none');
+          buttons.setAttribute('style', 'display:none');
         } else {
           console.log('keep goin');
         }
       }
 
+      var againButton = document.createElement('button');
+      againButton.type = 'button';
+      againButton.innerHTML = 'Play Again';
+      againButton.className = 'btn-styled';
+      againButton.onclick = function playAgain() {
+        computerWin = 0;
+        humanWin = 0;
+        totalGames = 0;
+        buttons.removeAttribute('style', 'display:none');
+        const gameWinner = document.querySelector('.gameWinner');
+        gameWinner.innerText = null;
+      };
+
       function humanWon() {
         const gameWinner = document.querySelector('.gameWinner');
-        gameWinner.textContent = `
-           The human won the whole thing`;
+        gameWinner.innerText = `
+        🌈💥✨🎉🎊 💃🕺 The human won the whole thing!! 💃🕺 🌈💥✨🎉🎊 `;
+        gameWinner.appendChild(againButton);
       }
       function computerWon() {
         const gameWinner = document.querySelector('.gameWinner');
-        gameWinner.textContent = `
-           The computer won the whole thing`;
+        gameWinner.innerText = `
+        🌈💥✨🎉🎊 💻 The computer won the whole thing!! 💻 🌈💥✨🎉🎊 `;
+        gameWinner.appendChild(againButton);
       }
     </script>
   </body>

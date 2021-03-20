@@ -1,58 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,300&display=swap');
 
 body {
-  margin: 0 auto;
   display: flex;
+  background-color: #f4f4f4;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  flex-direction: column;
+  margin: 0;
+  align-items: center;
   justify-content: center;
-  align-items:center;
-background-color:#f4f4f4;
-font-family: 'Raleway', sans-serif;
-font-size: 1em;
-flex-direction: column;
+  height: 50vh;
+  overflow: hidden;
+  text-align: center;
 }
 
+.container-all {
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  min-height: 300px;
+  max-height: 500px;
+  max-width: 800px;
+}
 button {
   flex-direction: row;
-  background-color:#faea9b;
-  color:#faab99;
+  background-color: #faea9b;
+  color: #faab99;
   border: none;
   border-radius: 50px;
   padding: 30px;
-margin: 30px;
+  margin: 30px;
+  font-size: larger;
 }
+
 button:hover {
-  cursor:pointer;
-}
-
-#container {
-  line-height:1.5;
-  background-color: white;
-  padding: 20px;
-
-}
-
-.winner {
-  color:#83d18e;
-  padding: 40px;
+  cursor: pointer;
   font-style: italic;
 }
 
+#container {
+  line-height: 1.5;
+  background-color: white;
+  padding: 20px;
+}
+
+.winner {
+  color: #83d18e;
+  padding: 40px;
+  font-style: italic;
+  transition: 0.5s ease-in;
+}
+.displayOne {
+  color: rgb(82, 206, 228);
+  font-size: larger;
+}
 .total {
-  color:#fac3e2;
+  color: #fac3e2;
 }
 
 .round {
-  color:#c2cdfa;
+  color: #c2cdfa;
 }
 
-.scoreboard{
-color:#faab99;
+.displayed {
+  color: #faab99;
 }
 .roundWinner {
-  color:orange;
+  color: orange;
+  padding: 20px;
 }
 
 .gameWinner {
-color:#d62424;
-font-style:italic;
+  color: #298fa6;
+  font-style: italic;
+  font-size: larger;
 }
